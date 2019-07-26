@@ -43,7 +43,11 @@ namespace WindowsFormsApp1 {
         private void Button3_Click(object sender,EventArgs e) {
         toolTip1.Show("显示文本",this.textPass,5000);
         }
-
+        /// <summary>
+        /// 提示信息设置
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ToolTip1_Popup_1(object sender,PopupEventArgs e) {
         ToolTip toolTip = (ToolTip)sender;
         if(e.AssociatedControl.Name == "textPass") {

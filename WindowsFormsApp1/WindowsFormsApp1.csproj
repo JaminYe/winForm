@@ -88,6 +88,12 @@
     <Compile Include="ListBox.Designer.cs">
       <DependentUpon>ListBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="listView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="listView.Designer.cs">
+      <DependentUpon>listView.cs</DependentUpon>
+    </Compile>
     <Compile Include="MeauStrip.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -132,6 +138,12 @@
     <Compile Include="progressBar.Designer.cs">
       <DependentUpon>progressBar.cs</DependentUpon>
     </Compile>
+    <Compile Include="treeView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="treeView.Designer.cs">
+      <DependentUpon>treeView.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="ComboBox.resx">
       <DependentUpon>ComboBox.cs</DependentUpon>
     </EmbeddedResource>
@@ -155,6 +167,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ListBox.resx">
       <DependentUpon>ListBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="listView.resx">
+      <DependentUpon>listView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -185,6 +200,9 @@
     </Compile>
     <EmbeddedResource Include="progressBar.resx">
       <DependentUpon>progressBar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="treeView.resx">
+      <DependentUpon>treeView.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
