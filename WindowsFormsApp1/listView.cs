@@ -51,6 +51,10 @@ namespace WindowsFormsApp1 {
         item.SubItems.Add(textBox3.Text);
         listView1.Items.Add(item);
         MessageBox.Show("添加成功");
+
+        MessageBox.Show("添加成功");
+
+
         }
         }
     }
