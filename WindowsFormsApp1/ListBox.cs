@@ -13,19 +13,19 @@ namespace WindowsFormsApp1 {
         public ListBox() {
         InitializeComponent();
         }
-
-        private void ListBox1_SelectedIndexChanged(object sender,EventArgs e) {
-
-        }
-
+        /// <summary>
+        /// 添加按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Button1_Click(object sender,EventArgs e) {
-        if (textBox1.Text != null && textBox1.Text != "") {
+        if(textBox1.Text != null && textBox1.Text != "") {
         listBox1.Items.Add(textBox1.Text);
         textBox1.Text = "";
         } else {
         MessageBox.Show("不得为空");
         }
-        
+
         }
         /// <summary>
         /// 查看选中
@@ -34,8 +34,8 @@ namespace WindowsFormsApp1 {
         /// <param name="e"></param>
         private void Button2_Click(object sender,EventArgs e) {
         string s = "";
-        for (int i = 0;i < listBox1.SelectedItems.Count;i++) {
-        s = s +"   "+ listBox1.SelectedItems[i].ToString();
+        for(int i = 0;i < listBox1.SelectedItems.Count;i++) {
+        s = s + "   " + listBox1.SelectedItems[i].ToString();
         }
         MessageBox.Show("选中项为" + s);
         }
@@ -46,11 +46,14 @@ namespace WindowsFormsApp1 {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void Button3_Click(object sender,EventArgs e) {
-        MessageBox.Show(listBox1.SelectedItems.Count.ToString());
-        for (int i = 0;i < listBox1.SelectedItems.Count;i++) {
-        MessageBox.Show(i + listBox1.SelectedItems[i].ToString());
-        listBox1.Items.Remove(listBox1.SelectedItems[i].ToString());
+        List<string> list = new List<string>();
+        for(int i = 0;i < listBox1.SelectedItems.Count;i++) {
+        list.Add(listBox1.SelectedItems[i].ToString());
+        }
+        foreach(string s in list) {
+        listBox1.Items.Remove(s);
         }
         }
     }
 }
+

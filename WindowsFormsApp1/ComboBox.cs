@@ -17,7 +17,11 @@ namespace WindowsFormsApp1 {
         private void Label1_Click(object sender,EventArgs e) {
 
         }
-
+        /// <summary>
+        /// 初始化
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ComboBox_Load(object sender,EventArgs e) {
         comboBox1.Items.Add("计算机网络技术");
         comboBox1.Items.Add("软件工程");
@@ -25,11 +29,11 @@ namespace WindowsFormsApp1 {
         comboBox1.Items.Add("会计");
         comboBox1.Items.Add("平面设计");
         }
-
-        private void Button2_Click(object sender,EventArgs e) {
-
-        }
-
+        /// <summary>
+        /// 添加按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Button1_Click(object sender,EventArgs e) {
         if (textBox1.Text == "") {
         MessageBox.Show("不得为空");
@@ -42,7 +46,11 @@ namespace WindowsFormsApp1 {
         comboBox1.Items.Add(textBox1.Text);
         textBox1.Text = "";
         }
-
+        /// <summary>
+        /// combox
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ComboBox1_SelectedIndexChanged(object sender,EventArgs e) {
         DialogResult dialogResult = MessageBox.Show("当前所选专业为" + comboBox1.Text + "是否删除?","提示",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
         if (dialogResult == DialogResult.Yes) {

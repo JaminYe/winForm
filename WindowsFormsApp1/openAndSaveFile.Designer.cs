@@ -44,18 +44,20 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(73, 103);
+            this.textBox1.Location = new System.Drawing.Point(110, 154);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textBox1.Size = new System.Drawing.Size(246, 189);
+            this.textBox1.Size = new System.Drawing.Size(367, 282);
             this.textBox1.TabIndex = 0;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(73, 376);
+            this.button1.Location = new System.Drawing.Point(110, 564);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(83, 31);
+            this.button1.Size = new System.Drawing.Size(124, 46);
             this.button1.TabIndex = 1;
             this.button1.Text = "打开";
             this.button1.UseVisualStyleBackColor = true;
@@ -63,9 +65,10 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(624, 376);
+            this.button2.Location = new System.Drawing.Point(936, 564);
+            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(86, 31);
+            this.button2.Size = new System.Drawing.Size(129, 46);
             this.button2.TabIndex = 2;
             this.button2.Text = "保存";
             this.button2.UseVisualStyleBackColor = true;
@@ -77,29 +80,28 @@
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(354, 103);
+            this.richTextBox1.Location = new System.Drawing.Point(531, 154);
+            this.richTextBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(298, 185);
+            this.richTextBox1.Size = new System.Drawing.Size(445, 276);
             this.richTextBox1.TabIndex = 3;
             this.richTextBox1.Text = "";
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(73, 38);
+            this.numericUpDown1.Location = new System.Drawing.Point(110, 57);
+            this.numericUpDown1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(197, 21);
+            this.numericUpDown1.Size = new System.Drawing.Size(296, 28);
             this.numericUpDown1.TabIndex = 4;
             this.numericUpDown1.ValueChanged += new System.EventHandler(this.NumericUpDown1_ValueChanged);
             // 
-            // toolTip1
-            // 
-            this.toolTip1.Popup += new System.Windows.Forms.PopupEventHandler(this.ToolTip1_Popup_1);
-            // 
             // textPass
             // 
-            this.textPass.Location = new System.Drawing.Point(367, 376);
+            this.textPass.Location = new System.Drawing.Point(550, 564);
+            this.textPass.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textPass.Name = "textPass";
-            this.textPass.Size = new System.Drawing.Size(88, 31);
+            this.textPass.Size = new System.Drawing.Size(132, 46);
             this.textPass.TabIndex = 5;
             this.textPass.Text = "测试";
             this.textPass.UseVisualStyleBackColor = true;
@@ -114,38 +116,40 @@
             // 
             // contextMenuStrip1
             // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.打开主页面ToolStripMenuItem,
             this.退出ToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.contextMenuStrip1.Size = new System.Drawing.Size(137, 48);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(171, 64);
             // 
             // 打开主页面ToolStripMenuItem
             // 
             this.打开主页面ToolStripMenuItem.Name = "打开主页面ToolStripMenuItem";
-            this.打开主页面ToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.打开主页面ToolStripMenuItem.Size = new System.Drawing.Size(170, 30);
             this.打开主页面ToolStripMenuItem.Text = "打开主页面";
             this.打开主页面ToolStripMenuItem.Click += new System.EventHandler(this.打开主页面ToolStripMenuItem_Click);
             // 
             // 退出ToolStripMenuItem
             // 
             this.退出ToolStripMenuItem.Name = "退出ToolStripMenuItem";
-            this.退出ToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.退出ToolStripMenuItem.Size = new System.Drawing.Size(170, 30);
             this.退出ToolStripMenuItem.Text = "退出";
             this.退出ToolStripMenuItem.Click += new System.EventHandler(this.退出ToolStripMenuItem_Click);
             // 
             // openAndSaveFile
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1200, 675);
             this.Controls.Add(this.textPass);
             this.Controls.Add(this.numericUpDown1);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "openAndSaveFile";
             this.Text = "openAndSaveFile";
             this.Load += new System.EventHandler(this.OpenAndSaveFile_Load);

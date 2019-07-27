@@ -42,8 +42,6 @@ namespace WindowsFormsApp1 {
         MessageBox.Show("请添加下级");
         return;
         }
-
-
         if(treeView1.SelectedNode == null) {
         MessageBox.Show("请选择节点!!!!");
         } else if(textBox1.Text != "") {

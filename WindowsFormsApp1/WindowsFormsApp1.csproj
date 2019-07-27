@@ -124,6 +124,12 @@
     <Compile Include="openAndSaveFile.Designer.cs">
       <DependentUpon>openAndSaveFile.cs</DependentUpon>
     </Compile>
+    <Compile Include="panel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="panel.Designer.cs">
+      <DependentUpon>panel.cs</DependentUpon>
+    </Compile>
     <Compile Include="PictureTimerBox.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -185,6 +191,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="openAndSaveFile.resx">
       <DependentUpon>openAndSaveFile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="panel.resx">
+      <DependentUpon>panel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PictureTimerBox.resx">
       <DependentUpon>PictureTimerBox.cs</DependentUpon>

@@ -1,5 +1,5 @@
 ﻿namespace WindowsFormsApp1 {
-    partial class DateTime {
+    partial class panel {
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -23,39 +23,44 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.components = new System.ComponentModel.Container();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // dateTimePicker1
+            // panel1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(229, 140);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(95, 28);
-            this.dateTimePicker1.TabIndex = 0;
-            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.DateTimePicker1_ValueChanged);
+            this.panel1.Location = new System.Drawing.Point(386, 31);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(722, 603);
+            this.panel1.TabIndex = 0;
             // 
-            // timer1
+            // button1
             // 
-            this.timer1.Tick += new System.EventHandler(this.Timer1_Tick);
+            this.button1.Location = new System.Drawing.Point(50, 76);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(157, 60);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
-            // DateTime
+            // panel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.dateTimePicker1);
-            this.Name = "DateTime";
-            this.Text = "DateTime";
-            this.Load += new System.EventHandler(this.DateTime_Load);
+            this.ClientSize = new System.Drawing.Size(1120, 667);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.panel1);
+            this.IsMdiContainer = true;
+            this.Name = "panel";
+            this.Text = "panel";
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button button1;
     }
 }

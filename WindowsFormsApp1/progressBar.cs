@@ -20,7 +20,11 @@ namespace WindowsFormsApp1 {
 
   
         
-
+        /// <summary>
+        /// 开始跑进度条
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Button1_Click_1(object sender,EventArgs e) {
         progressBar1.Maximum = 1000;
         progressBar1.Value = i;
@@ -31,24 +35,15 @@ namespace WindowsFormsApp1 {
         i++;
         progressBar1.Value = i;
         Thread.Sleep(100);
-       
         }
 
         }
 
-        private void ProgressBar_Load(object sender,EventArgs e) {
-        progressBar1.Value = i;
-        label1.Hide();
-        }
 
-        private void Label1_Click(object sender,EventArgs e) {
-
-        }
 
         private void 新建窗口ToolStripMenuItem_Click(object sender,EventArgs e) {
      PictureTimerBox p=new PictureTimerBox();
         p.MdiParent = this;
-
         p.Show();
         }
     }
