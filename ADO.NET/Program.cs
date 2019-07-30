@@ -10,7 +10,7 @@ using MySql.Data.MySqlClient;
 namespace ADO.NET {
     class Program {
         static void Main(string[] args) {
-        Command();
+        Parameter();
         Console.Read();
         }
 
@@ -18,8 +18,6 @@ namespace ADO.NET {
         /// Command使用
         /// </summary>
         public static void Command() {
-
-
         MySqlConnectionStringBuilder mySqlConnectionStringBuilder = new MySqlConnectionStringBuilder();
         //服务器地址
         mySqlConnectionStringBuilder.Server = "localhost";
@@ -33,26 +31,80 @@ namespace ADO.NET {
         mySqlConnectionStringBuilder.Password = "root";
         using(MySqlConnection sqlConnection = new MySqlConnection(mySqlConnectionStringBuilder.ConnectionString)) {
         #region 增加
-        /*        //sql语句
-                String sql = "insert into tb_selcustomer values(1,'张三',0,0,13112345678,'11@qq.com','安徽省xx市xx区',11.124,11234.112,15465,'备注')";
-                Console.WriteLine("SQL语句为{0}:",sql);
+        /* String sql = "insert into tb_selcustomer values(1,'张三',0,0,13112345678,'11@qq.com','安徽省xx市xx区',11.124,11234.112,15465,'备注')";
+         Console.WriteLine("SQL语句为{0}:",sql);
+         MySqlCommand mySqlCommand = new MySqlCommand(sql,sqlConnection);
+         try {
+         sqlConnection.Open();
+         int i = mySqlCommand.ExecuteNonQuery();
+         Console.WriteLine("共影响{0}行",i);
+         } catch(Exception e) {
+
+         Console.WriteLine("出错了,{0}",e.Message);
+         }*/
+        #endregion
+        #region  删除
+        /*String sql = "delete from tb_selcustomer where id=1";
+        Console.WriteLine("Sql语句为{0}:",sql);
+        MySqlCommand mySqlCommand = new MySqlCommand(sql,sqlConnection);
+        try {
+        sqlConnection.Open();
+        int i = mySqlCommand.ExecuteNonQuery();
+        Console.WriteLine("删除了{0}行",i);
+        } catch(Exception e) {
+        Console.WriteLine("错误,{0}",e.Message);
+        }*/
+        #endregion
+        #region 修改
+        /* string sql = "update tb_selcustomer set name='李四' where id=1";
+         Console.WriteLine("sql语句为{0}",sql);
+         MySqlCommand mySqlCommand = new MySqlCommand(sql,sqlConnection);
+         try {
+         sqlConnection.Open();
+         int i = mySqlCommand.ExecuteNonQuery();
+         Console.WriteLine("共修改了{0}行",i);
+         } catch(Exception e) {
+         Console.WriteLine("出错{0}",e.Message);
+         }
+ */
+        #endregion
+        #region 读取数据
+        /*        string sql = "select * from tb_selcustomer where id=1";
                 MySqlCommand mySqlCommand = new MySqlCommand(sql,sqlConnection);
                 try {
+
                 sqlConnection.Open();
-                int i = mySqlCommand.ExecuteNonQuery();
-                Console.WriteLine("共影响{0}行",i);
+                MySqlDataReader mySqlDataReader = mySqlCommand.ExecuteReader();
+                if(mySqlDataReader != null && mySqlDataReader.HasRows) {
+                int rows = 0;
+                Console.WriteLine("开始读取-------");
+                while(mySqlDataReader.Read()) {
+                for(int i = 0;i < mySqlDataReader.FieldCount;i++) {
+                Console.WriteLine("{0}:{1}",mySqlDataReader.GetName(i),mySqlDataReader.GetValue(i));
+                }
+                rows++;
+                }
+                Console.WriteLine("共{0}行数据",rows);
+                }
+                mySqlDataReader.Close();
                 } catch(Exception e) {
 
-                Console.WriteLine("出错了,{0}",e.Message);
+                Console.WriteLine("出错;{0}",e.Message);
                 }*/
         #endregion
-        String sql ="delete from "
+        #region 查询总条数
+        /* string sql = "select count(*) from tb_selcustomer";
+         MySqlCommand mySqlCommand = new MySqlCommand(sql,sqlConnection);
+         try {
+         sqlConnection.Open();
+         int i = Convert.ToInt32(mySqlCommand.ExecuteScalar());
+         Console.WriteLine("共{0}行数据",i);
+         } catch(Exception e) {
+         Console.WriteLine("错误{0}",e.Message);
+         }*/
+        #endregion
         }
-
         }
-
-
-
 
         /// <summary>
         /// 数据库连接
@@ -104,10 +156,75 @@ namespace ADO.NET {
         }
         Console.ReadLine();
         }
+        }
+
+        /// <summary>
+        /// 异步执行
+        /// </summary>
+        public static void CommandAsyn() {
+        MySqlConnectionStringBuilder mySqlConnectionStringBuilder = new MySqlConnectionStringBuilder();
+        //服务器地址
+        mySqlConnectionStringBuilder.Server = "localhost";
+        //端口号
+        mySqlConnectionStringBuilder.Port = 3306;
+        //指定数据库
+        mySqlConnectionStringBuilder.Database = "test";
+        //用户名
+        mySqlConnectionStringBuilder.UserID = "root";
+        //密码
+        mySqlConnectionStringBuilder.Password = "root";
+        using(MySqlConnection sqlConnection = new MySqlConnection(mySqlConnectionStringBuilder.ConnectionString)) {
+        //sql语句
+        string sql = "update tb_selcustomer set id=2";
+        MySqlCommand mySqlCommand = new MySqlCommand(sql,sqlConnection);
+        IAsyncResult asyncResult = mySqlCommand.BeginExecuteNonQuery();
+        //用于计时的变量
+        double time = 0;
+        //是否结束
+        while(asyncResult.IsCompleted == false) {
+        time++;
+        Console.WriteLine("{0}s",time * 0.001);
+        }
+        if(asyncResult.IsCompleted == true) {
+        Console.WriteLine("共用时{0}s",time * 0.001);
+        }
+        }
+        }
 
 
+        /// <summary>
+        /// 参数
+        /// </summary>
+        public static void Parameter() {
 
-
+        MySqlConnectionStringBuilder mySqlConnectionStringBuilder = new MySqlConnectionStringBuilder();
+        //服务器地址
+        mySqlConnectionStringBuilder.Server = "localhost";
+        //端口号
+        mySqlConnectionStringBuilder.Port = 3306;
+        //指定数据库
+        mySqlConnectionStringBuilder.Database = "test";
+        //用户名
+        mySqlConnectionStringBuilder.UserID = "root";
+        //密码
+        mySqlConnectionStringBuilder.Password = "root";
+        using(MySqlConnection sqlConnection = new MySqlConnection(mySqlConnectionStringBuilder.ConnectionString)) {
+        //sql语句
+        string sql = "update tb_selcustomer set id=@id";
+        //Command对象
+        MySqlCommand mySqlCommand = new MySqlCommand(sql,sqlConnection);
+        //创建参数对象
+        MySqlParameter id = new MySqlParameter("@id","3");
+        //添加参数
+        mySqlCommand.Parameters.Add(id);
+        try {
+        sqlConnection.Open();
+        int i = mySqlCommand.ExecuteNonQuery();
+        Console.WriteLine("共改变了{0}行",i);
+        } catch(Exception e) {
+        Console.WriteLine(e.Message);
+        }
+        }
         }
     }
 }
