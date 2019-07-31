@@ -308,5 +308,65 @@
         }
         }
    ```
-
-
+##### DataAdapter
+ADO.NET两个核心组件:连接数据库的DataProvider与操作本地文件的DataSet
+1. DataAdapter
+	- 为外部数据源与本地DataSet集合提供桥梁 将从外部数据源检索到的数据合理正确的调配到本地DataSet集合
+2. DataAdapter的工作原理
+	- DataApapter本质上就欧式一个数据调配器
+	- 当我们查询数据时 DataAdapter首先构造一个SelectCommand实例,然后检查是否打开连接,如果没有就打开连接,然后钓鱼DataReader接口检索数据,最后根据维护的映射关系,将检索得到的数据填充到本地的DataSet或者DataTable中.当更新数据时,DataAdapter将本地修改的数据根据映射关系构造InsertCommand,UpdateCommmand,DeleteCommand,DeleteCommmand对象人后执行相应的命令.
+	- DataAdapter的三大功能	
+		1. 数据检索:用DataReader实例来检索数据
+		2. 数据更新:执行增删操作
+		3. 表或列名映射:维护本地DataSet表名和列名与数据库的映射关系
+3. DataAdapter重要成员
+	- DataAdapter与其他数据提供对象的相似特征:基于连接的,继承基类,不同的数据源有对应派生版本
+	- SelectCommand属性:获取或设置用于在数据源查询的命令
+	- UpdateCommand属性:获取或设置用于在数据源更新的命令
+	- DeleteCommand属性:获取或设置用于在数据源删除的命令
+	- InsertCommand属性:获取或设置用于在数据源插入数据的命令
+	- Fill方法:填充数据集
+	- Update:更新数据源
+4. 创建DataAdapter对象
+	1. 无参构造方法
+    2. sqlCommand对象参数
+    3. sql语句,连接对象参数
+    4. sql语句,连接字符串参数
+	```c#
+        /// <summary>
+        /// 创建DataAdapter对象
+        /// </summary>
+        public static void DataAdapter() {
+            /* 1. 无参构造方法
+             2. sqlCommand对象参数
+             3. sql语句,连接对象参数
+             4. sql语句,连接字符串参数*/
+            MySqlConnectionStringBuilder sqlConnectionStringBuilder = new MySqlConnectionStringBuilder();
+            sqlConnectionStringBuilder.Server = "localhost";
+            sqlConnectionStringBuilder.Port = 3306;
+            sqlConnectionStringBuilder.Database = "test";
+            sqlConnectionStringBuilder.UserID = "root";
+            sqlConnectionStringBuilder.Password = "root";
+            string sql = "select * from tb_selcustomer";
+            //创建连接对象
+            using(MySqlConnection mySqlConnection = new MySqlConnection(sqlConnectionStringBuilder.ConnectionString)) {
+                //创建DataAdapter对象
+                MySqlDataAdapter mySqlDataAdapter = new MySqlDataAdapter(sql,mySqlConnection);
+                //创建DataSet储存数据
+                DataSet ds = new DataSet();
+                //数据填充
+                mySqlDataAdapter.Fill(ds);
+                //如果有数据
+                if(ds.Tables.Count > 0) {
+                    //行
+                    foreach(DataRow dataRow in ds.Tables[0].Rows) {
+                        //列
+                        for(int i = 0;i < ds.Tables[0].Columns.Count;i++) {
+                            //字段名与内容
+                            Console.Write("{0}:{1}\t",ds.Tables[0].Columns[i].ColumnName,dataRow[i]);
+                            }
+                        }
+                    }
+                }
+            }
+	```
