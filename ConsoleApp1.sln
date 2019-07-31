@@ -9,12 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp3", "ConsoleApp3\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsApp1", "WindowsFormsApp1\WindowsFormsApp1.csproj", "{081BB13D-97FB-4228-B875-31A70866F7A8}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "markDown", "markDown", "{3A7316CC-3C84-468A-8419-009CC803D86F}"
-	ProjectSection(SolutionItems) = preProject
-		..\..\ADO.NET.md = ..\..\ADO.NET.md
-		winForm.md = winForm.md
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ADO.NET", "ADO.NET\ADO.NET.csproj", "{A21DCCAD-8111-4C64-B540-8EFEDC527240}"
 EndProject
 Global
