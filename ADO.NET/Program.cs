@@ -7,11 +7,12 @@ using System.Data.SqlClient;
 using System.Xml;
 using MySql.Data.MySqlClient;
 using System.Data;
+using DbUtil;
 
 namespace ADO.NET {
     class Program {
         static void Main(string[] args) {
-            DataAdapter();
+            Test();
             Console.Read();
             }
 
@@ -226,7 +227,8 @@ namespace ADO.NET {
                     sqlConnection.Open();
                     int i = mySqlCommand.ExecuteNonQuery();
                     Console.WriteLine("共改变了{0}行",i);
-                    } catch(Exception e) {
+                    }
+                catch(Exception e) {
                     Console.WriteLine(e.Message);
                     }
                 }
@@ -271,5 +273,19 @@ namespace ADO.NET {
                     }
                 }
             }
+
+
+
+
+
+        public static void Test() {
+            string sql = "update tb_selcustomer set id = 6 where name=123";
+            int? i = DbUtil.DbUtil.AA(sql);
+            Console.WriteLine(i);
+            }
+
+
+
+
         }
     }

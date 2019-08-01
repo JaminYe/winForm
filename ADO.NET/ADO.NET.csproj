@@ -34,7 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="MySql.Data">
-      <HintPath>..\..\..\mysql-connector-net-8.0.17-noinstall\v4.5.2\MySql.Data.dll</HintPath>
+      <HintPath>..\..\..\..\Windows\Documents\mysql-connector-net-8.0.17-noinstall\v4.5.2\MySql.Data.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -52,6 +52,12 @@
   <ItemGroup>
     <None Include="ADO.NET.md" />
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DbUtil\DbUtil.csproj">
+      <Project>{3C9D2132-98AE-4CFA-8A8B-A3A56D2EB1B1}</Project>
+      <Name>DbUtil</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
