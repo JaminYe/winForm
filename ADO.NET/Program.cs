@@ -8,7 +8,7 @@ using System.Xml;
 using MySql.Data.MySqlClient;
 using System.Data;
 using DbUtil;
-
+using ADO.NET;
 namespace ADO.NET {
     class Program {
         static void Main(string[] args) {
@@ -197,7 +197,7 @@ namespace ADO.NET {
                 }
             }
         #endregion
-        #region
+        #region  参数
         /// <summary>
         /// 参数
         /// </summary>
@@ -279,13 +279,12 @@ namespace ADO.NET {
 
 
         public static void Test() {
-            string sql = "update tb_selcustomer set id = 6 where name=123";
-            int? i = DbUtil.DbUtil.AA(sql);
+            string sql = "select count(1) from customer where id=@id";
+            MySqlParameter[] parameters = new MySqlParameter[] {
+                new MySqlParameter("@id",3 )
+            };
+            int? i = DbUtil.DbUtil.ExecuteScalar(sql,parameters);
             Console.WriteLine(i);
             }
-
-
-
-
         }
     }

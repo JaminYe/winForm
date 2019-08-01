@@ -15,10 +15,6 @@ namespace WindowsFormsApp1 {
         InitializeComponent();
         }
 
-        private void PictureBox1_Click(object sender,EventArgs e) {
-
-        }
-
         private void Timer1_Tick(object sender,EventArgs e) {
         if(flag) {
         pictureBox1.Image = Image.FromFile(@"D:\Windows\Pictures\Camera Roll\orion_nebula_4k.jpg");
