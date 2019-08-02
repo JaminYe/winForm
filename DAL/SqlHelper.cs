@@ -8,7 +8,8 @@ using System.Data;
 using MySql.Data.MySqlClient;
 namespace DAL {
     public class SqlHelper {
-        public static string connectionString = ConfigurationManager.ConnectionStrings["MYSQL"].ConnectionString;
+        //public static string connectionString = ConfigurationManager.ConnectionStrings["MYSQL"].ConnectionString;
+        public static string connectionString = "server=localhost;port=3306;user=root;password=root;database=test";
         /// <summary>
         /// 增加修改删除
         /// </summary>

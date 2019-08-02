@@ -93,6 +93,7 @@ namespace WindowsFormsApp1 {
             }
             MainForm mainForm = new MainForm(account,password);
             mainForm.Show();
+            this.Close();
 
 
 

@@ -13,6 +13,7 @@
    10. Font: 设置窗体上字体
    11. ForeColor:设置窗体上文字颜色
    12. Icon:设置窗体图标
+   13. FormBorderStyle: 窗体边框
 2. 事件
    1. load:窗体加载事件
    2. mouseClick:鼠标单击事件
@@ -72,8 +73,17 @@
     - Stored: 是否排序
 11. PictureBox:图片控件
     - Image:获取或设置显示的图片
+    
     - ImageLocation: 获取或设置图片路径
+    
     - SizeMode: 设置图片显示大小和位置Normal(显示在左上角),Stretchimage(适应控件大小),AutoSize(控件大小适应图片大小),Centerimage(图片在图片控件居中),Zoom(图片自动缩放至符合图片控件的大小)
+    
+	```c#
+	System.Drawing.Drawing2D.GraphicsPath graphicsPath = new System.Drawing.Drawing2D.GraphicsPath();
+            graphicsPath.AddEllipse(this.pictureBox2.ClientRectangle);
+            Region region = new Region(graphicsPath);
+            this.pictureBox2.Region = region;
+	```
 12. Timer:定时器控件
 13. 日期时间控件
 	- Short:短日期格式,例如2019/1/1
@@ -84,6 +94,26 @@
 15. MeauStrip: 菜单栏控件
 16. StatusStrip:状态栏控件
 17. progressBar:进度条控件
+```c#
+		/// <summary>
+        /// 开始跑进度条
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Button1_Click_1(object sender,EventArgs e) {
+        progressBar1.Maximum = 1000;
+        progressBar1.Value = i;
+        label1.Show();
+        while (progressBar1.Value!=progressBar1.Maximum){
+        label1.Text = "进度:"+progressBar1.Value*100 / progressBar1.Maximum+"%";
+        label1.Refresh();
+        i++;
+        progressBar1.Value = i;
+        Thread.Sleep(100);
+        }
+
+        }
+```
 18. ToolStrip:工具栏控件
 19. MDI窗体:设置窗体IsMdiContainer属性为true,设置新窗体的MdiParent为当前窗体
 20. OpenFileDialog和SaveFileDialog打开文件与保存文件:通过流输入输出
@@ -101,10 +131,18 @@
         toolTip.ToolTipIcon = ToolTipIcon.Warning;
         }
         }
+		/// <summary>
+        /// 气泡测试
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Button3_Click(object sender,EventArgs e) {
+        toolTip1.Show("显示文本",this.textPass,5000);
+        }
 	```
 24.notifyIcon托盘控件
-```c#
-		/// <summary>
+	```c#
+	/// <summary>
         /// 当窗体最小化时
         /// </summary>
         /// <param name="sender"></param>
@@ -145,5 +183,88 @@
         private void 退出ToolStripMenuItem_Click(object sender,EventArgs e) {
         this.Close();
         }
-```
+	```
 25. treeView1树控件
+```c#
+     private void TreeView_Load(object sender,EventArgs e) {
+        treeView1.Nodes.Add("全部信息");
+        }
+        /// <summary>
+        /// 添加下级
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Button1_Click(object sender,EventArgs e) {
+        if(treeView1.SelectedNode == null) {
+        MessageBox.Show("请选择节点!!!!");
+        } else if(textBox1.Text != "") {
+        TreeNode treeNode = new TreeNode(textBox1.Text);
+        treeView1.SelectedNode.Nodes.Add(treeNode);
+        } else {
+        MessageBox.Show("节点信息不得为空!");
+        }
+        }
+        /// <summary>
+        /// 添加同级
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Button3_Click(object sender,EventArgs e) {
+        if(treeView1.SelectedNode.Parent == null) {
+        MessageBox.Show("请添加下级");
+        return;
+        }
+        if(treeView1.SelectedNode == null) {
+        MessageBox.Show("请选择节点!!!!");
+        } else if(textBox1.Text != "") {
+        TreeNode treeNode = new TreeNode(textBox1.Text);
+        treeView1.SelectedNode.Parent.Nodes.Add(treeNode);
+        treeView1.ExpandAll();
+        } else {
+        MessageBox.Show("节点信息不得为空!");
+        }
+        }
+        /// <summary>
+        /// 删除节点
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Button2_Click(object sender,EventArgs e) {
+        if(treeView1.SelectedNode == null) {
+        MessageBox.Show("请选择节点!!!!");
+        } else if(treeView1.SelectedNode.Nodes.Count == 0) {
+        treeView1.SelectedNode.Remove();
+        } else {
+        MessageBox.Show("请先删除子节点");
+        }
+        }
+```
+26. panel容器
+```c#
+  /// <summary>
+        /// 控制panel容器
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Button1_Click(object sender,EventArgs e) {
+        //清空容器容器中的控件
+        this.panel1.Controls.Clear();
+        //new一个进度条控件
+        progressBar progress = new progressBar();
+        //不设置或出现System.ArgumentException:“无法将顶级控件添加到控件。”
+        progress.TopLevel = false;
+        //让进度条控件的大小以容器大小为主
+        progress.Dock = DockStyle.Fill;
+        //去除窗口边界
+        progress.FormBorderStyle = FormBorderStyle.None;
+        //设置最大化
+        progress.WindowState = FormWindowState.Maximized;
+        //隐藏工具栏
+        progress.Visible = false;
+        //容器大小设置为窗口大小
+        panel1.Height = Screen.PrimaryScreen.Bounds.Size.Height;
+        panel1.Width = Screen.PrimaryScreen.Bounds.Size.Width;
+        this.panel1.Controls.Add(progress);
+        progress.Show();
+        }
+```
